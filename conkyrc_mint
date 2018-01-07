@@ -1,0 +1,141 @@
+#################################################################################
+# ConkyMint by Fragargon inspired by the open source community.			#
+# https://plus.google.com/u/0/+franciscogarciagonzalez				#
+# http://conky.sourceforge.net/docs.html					#
+# http://www.ifxgroup.net/conky.htm						#
+# setup made for an 1080 heigh display						#
+#################################################################################
+
+##############	conky engine	##############
+own_window yes
+own_window_hints above
+own_window_class Conky
+own_window_type desktop
+own_window_argb_visual yes
+own_window_argb_value 25
+own_window_class Conky
+
+##############	conky position	##############
+alignment top_right
+gap_x 10
+gap_y 45
+
+##############	conky size	##############
+minimum_size 1 1160
+maximum_width 250
+
+##############	fonts and colors##############
+default_color b7b7b7 # light gray
+default_outline_color 000000
+default_shade_color 000000
+use_xft yes
+font Ubuntu:size8
+xftfont Ubuntu:size=8
+uppercase no
+color2 green  # mint green
+color3 777777 # bar
+color5 57cbff # text
+color6 57cbff # graph
+color8 red    # red
+
+##############	other settings	##############
+background yes
+border_inner_margin 1
+border_width 1
+cpu_avg_samples 2
+double_buffer yes
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+net_avg_samples 2
+cpu_avg_samples 2
+diskio_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+stippled_borders 0
+update_interval 1.0
+use_spacer none
+show_graph_scale no
+show_graph_range no
+imlib_cache_size 0
+format_human_readable
+text_buffer_size 384
+total_run_times 0
+if_up_strictness address
+
+TEXT ##############	HEADER	##############
+${voffset -25}${image ~/.conky/distro_conky/conky/Mint.png -p -0,-0 -s 90x90}
+${font Neuropol:size=20}${alignr}${color2}Linux Mint${color}${font}${color}
+${alignr}${color5}17.3 "Rosa"${color}
+${alignr}${color slate grey}Cinnamon (64-bit)${color}
+${alignr}Name: ${color5}$nodename${color}
+${alignr}${color8}${kernel}${color}
+${alignr}${color slate grey}Up Time: ${color5}${uptime}${color}
+############		CPU		##############################################
+${voffset 5}${font Ubuntu:style=Bold}${color2}CPU ${font}${exec sensors|grep 'CPU Temperature'|awk '{print $3}'} ${stippled_hr}${color}${font}
+${voffset 1}${color5}core 0${color} ${goto 60} ${color white}${cpu cpu1}% ${alignr}${color3}${cpubar cpu1 10,135}${color}
+${color5}core 1${color} ${goto 60} ${color white}${cpu cpu2}% ${alignr}${color3}${cpubar cpu2 10,135}${color}
+${color5}core 2${color} ${goto 60} ${color white}${cpu cpu3}% ${alignr}${color3}${cpubar cpu3 10,135}${color}
+${color5}core 3${color} ${goto 60} ${color white}${cpu cpu4}% ${alignr}${color3}${cpubar cpu4 10,135}${color}
+${alignr}${color6}${cpugraph cpu0 30, 250 57cbff C00000 -t}${color}
+############		CPU PROCESS	##############################################
+total/running: ${alignr}[${processes} / ${running_processes}]
+${voffset 5}${color slate grey}name ${goto 140}pid ${goto 185}cpu ${goto 225}mem${font}
+${voffset -10}${stippled_hr}${font Ubuntu:size=8}${color}
+${color5}${top name 1}${color} ${goto 140}${top pid 1} ${goto 180} ${top cpu 1} ${goto 220} ${top mem 1}
+${color5}${top name 2}${color} ${goto 140}${top pid 2} ${goto 180} ${top cpu 2} ${goto 220} ${top mem 2}
+${color5}${top name 3}${color} ${goto 140}${top pid 3} ${goto 180} ${top cpu 3} ${goto 220} ${top mem 3}
+${color5}${top name 4}${color} ${goto 140}${top pid 4} ${goto 180} ${top cpu 4} ${goto 220} ${top mem 4}
+${color5}${top name 5}${color} ${goto 140}${top pid 5} ${goto 180} ${top cpu 5} ${goto 220} ${top mem 5}${font}
+${voffset -5}${color slate grey}${stippled_hr}${font Ubuntu:size=8}${color}
+############		MEMORY		##############################################      
+${voffset 15}${font Ubuntu:style=Bold}${color2}Memory ${font}${exec sensors|grep 'MB Temperature'|awk '{print $3}'} ${stippled_hr}${color}${font}
+${voffset 1}${color yellow}ram ${color}${goto 40} ${color white}${memperc}% ${color}${goto 80}${mem} / ${memmax} ${alignr}${color3}${membar 10,80}${color}
+${color yellow}swap ${color}${goto 40} ${color white}${swapperc}% ${color}${goto 80}${swap} / ${swapmax} ${alignr}${color3}${swapbar 10,80}${color}
+${alignr}${color6}${memgraph 20,250 57cbff C00000 -t}${color}
+############		MEMORY PROCESS		##############################################
+total/running: ${alignr}${color white}${memperc}%${color}
+${voffset 5}${color slate grey}name ${goto 140}pid ${goto 185}cpu ${goto 225}mem${font}
+${voffset -10}${stippled_hr}${font Ubuntu:size=8}${color}
+${color5}${top_mem name 1}${color} ${goto 140}${top_mem pid 1} ${goto 180} ${top_mem cpu 1} ${goto 220} ${top_mem mem 1}
+${color5}${top_mem name 2}${color} ${goto 140}${top_mem pid 2} ${goto 180} ${top_mem cpu 2} ${goto 220} ${top_mem mem 2}
+${color5}${top_mem name 3}${color} ${goto 140}${top_mem pid 3} ${goto 180} ${top_mem cpu 3} ${goto 220} ${top_mem mem 3}
+${color5}${top_mem name 4}${color} ${goto 140}${top_mem pid 4} ${goto 180} ${top_mem cpu 4} ${goto 220} ${top_mem mem 4}
+${color5}${top_mem name 5}${color} ${goto 140}${top_mem pid 5} ${goto 180} ${top_mem cpu 5} ${goto 220} ${top_mem mem 5}${font}
+${voffset -5}${color slate grey}${stippled_hr}${font Ubuntu:size=8}${color}
+############		FILE SYSTEME		############################################## 
+${voffset 15}${font Ubuntu:style=Bold}${color2}Filesystem ${stippled_hr}${color}${font}
+${voffset 1}${color yellow}root ${color}${goto 85}${color white}${fs_used_perc /}% ${color}${alignr}${color3}${fs_bar 8,125 /}${color}${font Ubuntu:size=8}
+${fs_type /}  ${goto 125}${color5}${fs_used /} / ${fs_size /}${color} ${font}
+${voffset 2}${alignr}${color6}${diskiograph /dev/sda6 10,250 57cbff C00000 -t}${color}
+${voffset 3}${color yellow}home ${color}${goto 85}${color white}${fs_used_perc /home}% ${color}${alignr}${color3}${fs_bar 8,125 /home}${color}${font Ubuntu:size=8}
+${fs_type /home}  ${goto 125}${color5}${fs_used /home} / ${fs_size /home}${color} ${font}
+${voffset 2}${alignr}${color6}${diskiograph /dev/sdb1 10,250 57cbff C00000 -t}${color}
+${voffset 3}${if_mounted /mnt/SAMSUNG}${color yellow}removable ${color}${goto 85}${color white}${fs_used_perc /mnt/SAMSUNG}% ${color}${alignr}${color3}${fs_bar 8,125 /mnt/SAMSUNG}${color}${endif}${font Ubuntu:size=8}
+${fs_type /mnt/SAMSUNG}  ${goto 125}${color5}${fs_used /mnt/SAMSUNG} / ${fs_size /mnt/SAMSUNG}${color} ${font}
+############		Disk io			##############################################
+${voffset 5}${color slate grey}name ${goto 140}pid ${goto 185}cpu ${goto 225}mem${font}
+${voffset -10}${stippled_hr}${font Ubuntu:size=8}${color}
+${color5}${top_io name 1}${color} ${goto 140}${top_io pid 1} ${goto 180} ${top_io cpu 1} ${goto 220} ${top_io mem 1}
+${color5}${top_io name 2}${color} ${goto 140}${top_io pid 2} ${goto 180} ${top_io cpu 2} ${goto 220} ${top_io mem 2}
+${color5}${top_io name 3}${color} ${goto 140}${top_io pid 3} ${goto 180} ${top_io cpu 3} ${goto 220} ${top_io mem 3}
+${color5}${top_io name 4}${color} ${goto 140}${top_io pid 4} ${goto 180} ${top_io cpu 4} ${goto 220} ${top_io mem 4}
+${color5}${top_io name 5}${color} ${goto 140}${top_io pid 5} ${goto 180} ${top_io cpu 5} ${goto 220} ${top_io mem 5}${font}
+${voffset -5}${color slate grey}${stippled_hr}${font Ubuntu:size=8}${color}
+############		IP NETWORK		##############################################
+${voffset 15}${font Ubuntu:style=Bold}${color2}Network ${stippled_hr}${color}${font}
+${color5}local ip: ${alignr}${addrs eth0}
+public ip: ${alignr}${exec wget http://ipinfo.io/ip -qO -}${color}
+############		NETWORK ACTIVE CONNECTION		##############################################
+${voffset 1}${color yellow}Inbound: ${color white}${tcp_portmon 1 65535 count}${goto 110}${color yellow}Outbound: ${color white}${tcp_portmon 1 65535 count}${alignr}${color yellow}Total: ${color white}${tcp_portmon 1 65535 count}
+${voffset 3}${color slate grey}Process${goto 80}${color slate grey}Remote IP${goto 160}${color slate grey}L-Port ${alignr}${color slate grey}R-Port${color lightgrey}
+${voffset -10}${color slate grey}${stippled_hr}
+${color lightgrey}${font Ubuntu Mono:size=8}${if_up eth0}${texeci 300 netstat -anp | grep 'ESTABLISHED' | sed -r 's|.*192.[0-9.]+:([0-9]*)\s*([0-9.]+):([0-9]+)[^/]+/([a-zA-Z0-9]*)|\4 \2 \1 \3|' | awk '{printf("%-14s %-15s %5s %10s\n",$1,$2,$3,$4)}'}${else} no internet connection${endif}${font}
+############		NETWORK GRAPH		##############################################
+${font Ubuntu:size=7}${color slate grey}TotalUP: ${color white} ${totalup eth0}${goto 135}${color slate grey}TotalDOWN: ${color white}${totaldown eth0}${color}${font}
+${color6}${upspeedgraph eth0 30,120 57cbff C00000 -t}${alignr}${downspeedgraph eth0 30,120 57cbff C00000 -t}${color}
+${font Ubuntu:size=7}${color slate grey}UP: ${color white}${upspeed eth0}${goto 135}${color slate grey}DOWN: ${color white}${downspeed eth0}${font}
+${voffset -5}${color slate grey}${stippled_hr}${font Ubuntu:size=8}${color}
