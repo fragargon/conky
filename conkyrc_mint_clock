@@ -68,7 +68,7 @@ lua_draw_hook_pre clock_rings
 ############
 TEXT
 
-${voffset 145}${offset 215}${color slate grey}${font GE Inspira:pixelsize=62}${time %d}
-${voffset -25}${offset 185}${font GE Inspira:pixelsize=22} ${time  %B} ${time %Y}
-${voffset 1}${offset 218}${font GE Inspira:pixelsize=20} ${time  %A}
+${voffset 145}${alignc}${offset -20}${color slate grey}${font GE Inspira:pixelsize=62}${time %d}
+${voffset -25}${alignc}${offset 105}${font GE Inspira:pixelsize=22} ${time %B} ${time %Y}
+${voffset -5}${alignc}${font GE Inspira:pixelsize=20} ${time  %A}
 
