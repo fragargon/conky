@@ -7,8 +7,8 @@ I added a google calendar and a clock so this conky folder got 3 ./conkyrc_mint 
 ./conkyrc_clock => the clock (this script launch ../conky/clock_ring.lua)
 
 # pictures
-./conkyrc_mint.png
-./conkyrc_mint_clock.png
+![conkyrc_mint pic](/images/conkyrc_mint.png)
+![conkyrc_mint_clock pic](/images/conkyrc_mint_clock.png)
 
 To install this conky configuration file extract the archive into your home directory.  No fonts have been provided, but are easy enough to find and install, and chances are most of them are already installed.  Following is a list of fonts used:
 Ubuntu
